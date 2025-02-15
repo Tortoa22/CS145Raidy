@@ -1,0 +1,40 @@
+import java.util.Scanner;  // Import Scanner class for user input
+
+public class ComputeFibonacci {
+   // Static variable to keep track of how many times fib() method is called
+   static long callCount;  
+
+   public static void main(String args[]) {
+       // Create Scanner object for reading user input
+       Scanner input = new Scanner(System.in);
+       
+       // Prompt user to enter an index and store the input
+       System.out.print("Enter an index for fibonacci number: ");
+       int index = input.nextInt();
+
+       // Initialize the counter before starting fibonacci calculation
+       callCount = 0;  
+
+       // Calculate and display the fibonacci number at given index
+       System.out.println("Fibonacci number at index " + index + " is " + fib(index));
+       
+       // Display the total number of times fib() method was called
+       System.out.println("Number of times fib is invoked? " + callCount);
+       
+       input.close();
+   }
+
+   public static long fib(long index) {
+       // Increment counter each time this method is called
+       callCount++;  
+
+       // Base cases for Fibonacci sequence
+       if (index == 0)
+           return 0;
+       else if (index == 1)  
+           return 1;
+       // Recursive case: Fibonacci number is sum of previous two numbers
+       else
+           return fib(index - 1) + fib(index - 2);
+   }
+}
